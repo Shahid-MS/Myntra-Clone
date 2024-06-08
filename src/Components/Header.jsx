@@ -3,9 +3,13 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdCart } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const bag = useSelector((store) => store.bag);
+  // console.log(bag);
+
   return (
-    <header>
+    <header className="mb-5">
       <div className="logo_container">
         <Link to="/">
           <img
@@ -46,7 +50,7 @@ const Header = () => {
         <Link className="action_container" to="/cart">
           <IoMdCart />
           <span className="action_name">Cart</span>
-          <span className="bag-item-count">0</span>
+          <span className="bag-item-count">{bag.length}</span>
         </Link>
       </div>
     </header>

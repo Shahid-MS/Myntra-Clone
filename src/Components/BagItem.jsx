@@ -1,6 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import { useDispatch } from "react-redux";
+import { bagActions } from "../Store/bagSlice";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+
 const BagItem = ({ item }) => {
+  const dispatch = useDispatch();
+  const handleRemoveFromBag = () => {
+    dispatch(bagActions.removeFrombag(item.id));
+  };
   return (
     <div className="bag-item-container">
       <div className="item-left-part">
@@ -26,11 +34,8 @@ const BagItem = ({ item }) => {
         </div>
       </div>
 
-      <div
-        className="remove-from-cart"
-        onClick={() => console.log("button clicked")}
-      >
-        X
+      <div className="remove-from-cart" onClick={handleRemoveFromBag}>
+        <MdOutlineDeleteOutline />
       </div>
     </div>
   );
